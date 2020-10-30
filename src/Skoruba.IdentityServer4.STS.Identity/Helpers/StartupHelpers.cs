@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using IdentityServer4.EntityFramework.Storage;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.DataProtection.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
@@ -37,10 +39,15 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.Tokens;
 using Skoruba.IdentityServer4.Shared.Authentication;
 using Skoruba.IdentityServer4.Shared.Configuration.Identity;
+using Skoruba.IdentityServer4.STS.Identity.Configuration;
+using Skoruba.IdentityServer4.STS.Identity.Configuration.ApplicationParts;
+using Skoruba.IdentityServer4.STS.Identity.Configuration.Constants;
+using Skoruba.IdentityServer4.STS.Identity.Configuration.Interfaces;
+using Skoruba.IdentityServer4.STS.Identity.Helpers.Localization;
 
 namespace Skoruba.IdentityServer4.STS.Identity.Helpers
 {
-    public static class StartupHelpers
+	public static class StartupHelpers
     {
         /// <summary>
         /// Register services for MVC and localization including available languages
@@ -343,7 +350,7 @@ namespace Skoruba.IdentityServer4.STS.Identity.Helpers
 
                     if (!string.IsNullOrEmpty(advancedConfiguration.PublicOrigin))
                     {
-                        options.PublicOrigin = advancedConfiguration.PublicOrigin;
+                        //options.PublicOrigin = advancedConfiguration.PublicOrigin;
                     }
 
                     if (!string.IsNullOrEmpty(advancedConfiguration.IssuerUri))
