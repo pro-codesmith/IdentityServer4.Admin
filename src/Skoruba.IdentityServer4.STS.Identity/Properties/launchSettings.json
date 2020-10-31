@@ -2,13 +2,9 @@
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
-    "iis": {
-      "applicationUrl": "https://localhost/Skoruba.IdentityServer4.STS.Identity",
-      "sslPort": 0
-    },
     "iisExpress": {
-      "applicationUrl": "http://localhost:5000",
-      "sslPort": 0
+      "applicationUrl": "https://localhost:44310",
+      "sslPort": 44310
     }
   },
   "profiles": {

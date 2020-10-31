@@ -20,6 +20,7 @@ using Microsoft.AspNetCore.DataProtection;
 using Skoruba.IdentityServer4.Shared.Dtos;
 using Skoruba.IdentityServer4.Shared.Dtos.Identity;
 using Skoruba.IdentityServer4.Shared.Helpers;
+using Microsoft.IdentityModel.Logging;
 
 namespace Skoruba.IdentityServer4.Admin
 {
@@ -97,8 +98,9 @@ namespace Skoruba.IdentityServer4.Admin
             if (env.IsDevelopment())
 			{
                 app.UseDeveloperExceptionPage();
-			}
-			else
+                IdentityModelEventSource.ShowPII = true;
+            }
+            else
 			{
 				app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
